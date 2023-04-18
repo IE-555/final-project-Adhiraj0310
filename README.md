@@ -1,59 +1,51 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/6ebMFVGY)
-# IE 555 Project Proposal Template
+Team Members:  
+Adhiraj Garg, Adhirajg@buffalo.edu 
+Prachi Ramesh Kamble, Prachira@buffalo.edu
+Vivek Reddy Duvvuru, Vduvvuru@buffalo.edu
+Prashant Bhumireddy , Pbhumire@buffalo.edu
 
---- 
-**Note**:  The *[italicized]* content below is for your reference only.  Please remove these comments before submitting.
----
 
-## Team Members:  
-- **Name 1**, **UB Email Address 1** - This is the person who will submit the proposal
-- **Name 2**, **UB Email Address 2**
-- **Name 3**, **UB Email Address 3**
-- **Name 4**, **UB Email Address 4**
 
-*No more than 4 team members are allowed.  No exceptions.*
+Proposed Project Title:
 
----
+Weather Forecasting using Python: Analyzing Historical Data for Future Predictions
 
-## Proposed Project Title
 
-- **Write a brief, but descriptive, title here**
+Option 2 - Online Data Analysis
 
---- 
 
-## Project Type
-*[Your group has two options for the course project.  Please select **one** option and provide the corresponding relevant information.]*
+Data Sources
 
-### Option 1 - Research Paper
-*[Remove this section if you are **NOT** choosing Option 1.]*
-> Students may identify a relevant paper from an archived journal which features an algorithm/heuristic designed to solve a particular problem. This algorithm should be coded in Python and validated against the results published in the paper. A final report describing (a) the problem itself, (b) an overview of the solution procedure, (c) a description of how the test data were generating, (d) a summary of the various functions employed to execute the code, and (e) a “how-to” guide for running the Python code is expected.
+We are planning to use the data source from Weather API and open-meteo as they contain all the necessary information and parameters we will need for our project.
+https://www.weatherapi.com/docs/
+https://open-meteo.com/en/docs/historical-weather-api#latitude=42.89&longitude=-78.88&start_date=2023-03-30&end_date=2023-04-13&hourly=temperature_2m
+https://archive-api.open-meteo.com/v1/archive?latitude=42.89&longitude=-78.88&start_date=2023-03-30&end_date=2023-04-13&hourly=temperature_2m
 
-#### Reference
-- *[Provide a citation to the journal article, including title, authors, journal name, year.]*
+Analysis Plan
 
-#### Problem Description
-- *[Provide a description of the problem defined in the reference article.]*
+Analysis steps to be performed:
 
-#### Algorithm Description
-- *[Provide a description of the algorithm defined in the reference article.]*
+1.Data Acquisition : 
+We will first gather historical weather data from a large number of relevant data sources accessible online, and then retrieve the data via an API.
 
-#### Source Data
-- *[Concisely explain where you plan to obtain source data on which to test the algorithm.]*
+2.Data cleaning : 
+We will clean and preprocess the data once we have collected it to eliminate any missing or inaccurate information.  To prepare the data for use in a regression  model, we may need to normalize or scale it.
 
-#### Motivation
-- *[Explain why you chose this paper.]*
- 
-### Option 2 - Online Data Analysis
-*[Remove this section if you are **NOT** choosing Option 2.]*
-> Students may develop their own programming project. In this option, students must identify a source of online data, which will be dynamically imported via Python. The Python code must utilize these data to either make decision support recommendations or provide a detailed analysis of the data. A YouTube video describing the mechanics of the Python code will be required, in addition to a “how-to” guide for running the code. All source code must be submitted, and the course instructor must be able to execute the code without errors.
+3.Variable engineering : 
+Once the data has been cleaned and preprocessed, We must extract relevant features for use in our regression model. The purpose of Variable engineering is to identify the most essential variables for weather forecasting and to prepare the data for use in a regression model.
 
-#### Data Sources
-- *[Provide a description of each data source you plan to use.]*
-    - *[For each data source, provide a link to the API documentation.]*
+4.Model Selection : 
+Once the required characteristics have been collected, we must choose an acceptable regression model to employ for weather forecasting.The model used will be determined by the unique use case and the type of the data.
 
-#### Analysis Plan
-- *[Clearly explain the analysis you will conduct with the data.]*
-- *[Clearly justify how the chosen source data will enable your team to conduct this analysis.]*
+5.Model Training and Evaluation : 
+Using past weather data, we must train the regression model. This entails dividing the data into training and testing sets and training the model using the training set. We must assess the model's performance on the testing set once it has been trained. 
 
-#### Motivation
-- *[Explain why you have chosen to conduct this analysis.  What is it about this data that interests you?]*
+6.Data Interpretation: 
+Once we've created a regression model for weather forecasting using historical data, we need to understand the findings. Understanding the patterns and trends in the data and applying the model to provide insights and forecasts is required.
+
+The selected source data for weather forecasting requested through Python is obtained from ‘weather api’ & 'open-meteo', which is historical weather data, is a rich and relevant data source for doing the study. With such a vast dataset  Historical weather data comprises information on previous weather patterns such as temperature, humidity, wind speed, and precipitation, which may be used to determine patterns and trends that might improve future weather forecasts. Python libraries and tools, such as NumPy, Pandas, etc.. can be used to analyze datasets and train a model in python to predict the future weather forecast.
+
+Motivation
+
+Accurate weather forecasting is essential for businesses such as agriculture, transportation, and energy, as well as people who plan outside activities or travel. We can acquire insights into weather patterns and trends by analyzing historical weather data, which may influence future weather predictions and help users make better decisions. We'll also learn about how weather patterns have evolved through time and how they could alter in the future. By analyzing this data, we will be able to apply the programming skills we learned in class to real-world problems.
+
