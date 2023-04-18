@@ -1,7 +1,10 @@
 Team Members:  
 Adhiraj Garg, Adhirajg@buffalo.edu 
+
 Prachi Ramesh Kamble, Prachira@buffalo.edu
+
 Vivek Reddy Duvvuru, Vduvvuru@buffalo.edu
+
 Prashant Bhumireddy , Pbhumire@buffalo.edu
 
 
@@ -17,8 +20,11 @@ Option 2 - Online Data Analysis
 Data Sources
 
 We are planning to use the data source from Weather API and open-meteo as they contain all the necessary information and parameters we will need for our project.
+
 https://www.weatherapi.com/docs/
+
 https://open-meteo.com/en/docs/historical-weather-api#latitude=42.89&longitude=-78.88&start_date=2023-03-30&end_date=2023-04-13&hourly=temperature_2m
+
 https://archive-api.open-meteo.com/v1/archive?latitude=42.89&longitude=-78.88&start_date=2023-03-30&end_date=2023-04-13&hourly=temperature_2m
 
 Analysis Plan
