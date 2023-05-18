@@ -1,59 +1,19 @@
-Team Members:  
-Adhiraj Garg, Adhirajg@buffalo.edu 
+# Write a Brief Descriptive Title Here
 
-Prachi Ramesh Kamble, Prachira@buffalo.edu
+Authors:  **Name 1**, **Name 2**, etc.
 
-Vivek Reddy Duvvuru, Vduvvuru@buffalo.edu
+YouTube Video:  [Link](http://your_link_goes_here)
 
-Prashant Bhumireddy , Pbhumire@buffalo.edu
+---
 
-
-
-Proposed Project Title:
-
-Weather Forecasting using Python: Analyzing Historical Data for Future Predictions
+**NOTE**:  The *italicized* content below is for your reference only.  Please remove these comments before submitting.
 
 
-Option 2 - Online Data Analysis
+---
 
 
-Data Sources
 
-We are planning to use the data source from Weather API and open-meteo as they contain all the necessary information and parameters we will need for our project.
 
-https://www.weatherapi.com/docs/
-
-https://open-meteo.com/en/docs/historical-weather-api#latitude=42.89&longitude=-78.88&start_date=2023-03-30&end_date=2023-04-13&hourly=temperature_2m
-
-https://archive-api.open-meteo.com/v1/archive?latitude=42.89&longitude=-78.88&start_date=2023-03-30&end_date=2023-04-13&hourly=temperature_2m
-
-Analysis Plan
-
-Analysis steps to be performed:
-
-1.Data Acquisition : 
-We will first gather historical weather data from a large number of relevant data sources accessible online, and then retrieve the data via an API.
-
-2.Data cleaning : 
-We will clean and preprocess the data once we have collected it to eliminate any missing or inaccurate information.  To prepare the data for use in a regression  model, we may need to normalize or scale it.
-
-3.Variable engineering : 
-Once the data has been cleaned and preprocessed, We must extract relevant features for use in our regression model. The purpose of Variable engineering is to identify the most essential variables for weather forecasting and to prepare the data for use in a regression model.
-
-4.Model Selection : 
-Once the required characteristics have been collected, we must choose an acceptable regression model to employ for weather forecasting.The model used will be determined by the unique use case and the type of the data.
-
-5.Model Training and Evaluation : 
-Using past weather data, we must train the regression model. This entails dividing the data into training and testing sets and training the model using the training set. We must assess the model's performance on the testing set once it has been trained. 
-
-6.Data Interpretation: 
-Once we've created a regression model for weather forecasting using historical data, we need to understand the findings. Understanding the patterns and trends in the data and applying the model to provide insights and forecasts is required.
-
-The selected source data for weather forecasting requested through Python is obtained from ‘weather api’ & 'open-meteo', which is historical weather data, is a rich and relevant data source for doing the study. With such a vast dataset  Historical weather data comprises information on previous weather patterns such as temperature, humidity, wind speed, and precipitation, which may be used to determine patterns and trends that might improve future weather forecasts. Python libraries and tools, such as NumPy, Pandas, etc.. can be used to analyze datasets and train a model in python to predict the future weather forecast.
-
-Motivation
-
-Accurate weather forecasting is essential for businesses such as agriculture, transportation, and energy, as well as people who plan outside activities or travel. We can acquire insights into weather patterns and trends by analyzing historical weather data, which may influence future weather predictions and help users make better decisions. We'll also learn about how weather patterns have evolved through time and how they could alter in the future. By analyzing this data, we will be able to apply the programming skills we learned in class to real-world problems.
 
 ## Task List
 
@@ -73,3 +33,87 @@ Accurate weather forecasting is essential for businesses such as agriculture, tr
 | 11 |Final Report |Upload README.md document to Github | 2023-05-17 | IN PROGRESS
 
 --- 
+
+## Introduction
+*The purpose of this section is to provide some background about your project.  For example, your introduction should discuss*
+- *The purpose of your project;*
+- *The type of data you're using;*
+- *What you're doing with this data;*
+- *What types of analysis you're conducting;*
+
+*Your introduction should make the reader excited to read the rest of this document.*
+
+---
+
+## References
+*In this section, provide links to your references and data sources.  For example:*
+- Source code was adapted from [the magic source code farm](http://www.amagicalnonexistentplace.com)
+- The code retrieves data from [the organization for hosting cool data](http://www.anothermagicalnonexistentplace.com)
+- The forecasting models were modified from [some academic research paper](http://www.linktotheacademicpaperyouused.com)
+
+---
+
+## Requirements
+*In this section, provide detailed instructions for installing any necessary pre-requisites.  This could include:*
+- *Python packages/libraries;*
+- *API keys;*
+- *etc.*
+
+---
+
+## Explanation of the Code
+*In this section you should provide a more detailed explanation of what, exactly, your Python script(s) actually do.  Your classmates should be able to read your explanation and understand what is happening in the code.*
+
+The code, `needs_a_good_name.py`, begins by importing necessary Python packages:
+```
+import matplotlib.pyplot as plt
+```
+
+- *NOTE:  If a package does not come pre-installed with Anaconda, you'll need to provide instructions for installing that package here.*
+
+We then import data from [insert name of data source].  We print the data to allow us to verify what we've imported:
+```
+x = [1, 3, 4, 7]
+y = [2, 5, 1, 6]
+
+for i in range(0,len(x)):
+	print "x[%d] = %f" % (i, x[i])		
+```
+- *NOTE 1:  This sample code doesn't actually import anything.  You'll need your code to grab live data from an online source.*  
+- *NOTE 2:  You will probably also need to clean/filter/re-structure the raw data.  Be sure to include that step.*
+
+Finally, we visualize the data.  We save our plot as a `.png` image:
+```
+plt.plot(x, y)
+plt.savefig('samplefigure.png')	
+plt.show()
+```
+
+The output from this code is shown below:
+
+![Image of Plot](samplefigure.png)
+
+---
+
+## How to Run the Code
+*Provide step-by-step instructions for running the code.  For example, I like to run code from the terminal:*
+1. Ensure that you have registered for the [insert name of API] API key.  (You may reference the instructions for doing this.)
+
+2. Ensure that you have installed necessary Python packages. (Again, you may include a reference here to a prior section in the README that provides the instructions.)
+
+
+2. Open a terminal window.
+
+2. Change directories to where `needs_a_good_name.py` is saved.
+
+3. Type the following command:
+	```
+	python needs_a_good_name.py
+	```
+
+- *NOTE: You are welcome to provide instructions using Anaconda, IPython, or Jupyter notebooks.*
+
+---
+
+## Results from your Analysis
+*Last, but not least, you need to demonstrate your results.  You should include figures and/or tables of results.  What worked well?  What could be improved?*
