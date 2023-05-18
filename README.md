@@ -313,14 +313,16 @@ We got the forecasted values of Humidity from the API, and we got the predicted 
 
 We also got the values of Humidity for the date/dates for which we predicted the Humidity using our model and after comparing them we find that the predicted values are getting closer to the forecasted values which we obtained and we also found the mean squared error which is 209.18585374612323. To reduce the error even further we can train our model for a much longer period but as we know that weather prediction is not always accurate and even the forecasted values from the API can be wrong.
 
-**3. Precipitation**
+**3. Precipitation:**
+
 We got the forecasted values of Precipitation from the API, and we got the predicted values of Precipitation for the given coordinates of latitude and longitude using our python model. After comparing them we plotted the comparison graph as follows:
 
 ![Precipitation](image/Results/Precipitation.png)
 
 We also got the values of Precipitation for the date/dates for which we predicted the Precipitation using our model and after comparing them we find that the predicted values are getting closer to the forecasted values which we obtained and we also found the mean squared error which is 1.2360902458370944.In this case we don’t have to do much as the error is very small. 
     
-**4. Windspeed**
+**4. Windspeed:**
+
 We got the forecasted values of Windspeed from the API, and we got the predicted values of Windspeed for the given coordinates of latitude and longitude using our python model. After comparing them we plotted the comparison graph as follows:
 
 ![WindSpeed](image/Results/WindSpeed.png)
