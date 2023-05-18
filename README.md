@@ -57,6 +57,7 @@ We hope that this project will leave you excited to explore the fascinating worl
 1.To build this model and extract the data from the API’s, we will need to use a few python libraries, some of which might already be pre installed and if they are not you will have to install them in your ipython notebook as follows:
 
 Enter the following commands in your notebook and they will install all the required libraries which we are using. 
+```
 ! pip install matplotlib
 
 ! pip install request
@@ -70,9 +71,11 @@ Enter the following commands in your notebook and they will install all the requ
 ! pip install http
 
 ! pip install pickle
+```
 
 2. To use the API from the website for data extraction we will first need to check the website for its API link if one is given or sometimes some websites have their API keys and Host link which we can use in our code in the following ways:
 
+```
 response = requests.get(f"https://archive-api.open-meteo.com/v1/era5?latitude={latitude}&longitude={longitude}&start_date={start_date}&end_date={end_date}&hourly=temperature_2m,relativehumidity_2m,precipitation,windspeed_10m")
 response = json.loads(response.content)
   
@@ -96,6 +99,7 @@ response = requests.get(url, headers=headers, params=querystring)
 
 
 print(response.json()
+```
 	
 3. We should know the latitude and longitude of the place whose weather we are trying to predict and also the start and end dates for which we need to predict.
 
