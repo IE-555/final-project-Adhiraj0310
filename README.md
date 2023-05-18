@@ -103,36 +103,146 @@ print(response.json()
 ---
 
 ## Explanation of the Code
-*In this section you should provide a more detailed explanation of what, exactly, your Python script(s) actually do.  Your classmates should be able to read your explanation and understand what is happening in the code.*
 
-The code, `needs_a_good_name.py`, begins by importing necessary Python packages:
-```
+1.Importing all the libraries we installed using the above commands: 
+
 import matplotlib.pyplot as plt
-```
+	
+import requests
+	
+import json
+	
+import pandas as pd
+	
+from sklearn.linear_model import LinearRegression
+	
+from sklearn.model_selection import train_test_split
+	
+from sklearn.metrics import mean_squared_error
+	
+import pickle
 
-- *NOTE:  If a package does not come pre-installed with Anaconda, you'll need to provide instructions for installing that package here.*
+2.Now we initialize our code with some variables like :
+	
+Latitude and longitude of the place whose weather we want to predict
+	
+Start and end date to retract History Weather data from the API which we will use to train our model.
+	
+Creating two different file names to save the History Weather Data( for training) and Forecasted weather data(for testing i.e predicting) which will automatically change based on the coordinates of the location given by us.(we can print the filename just to check if it's in the correct format using the commands ‘filename’ , ’filename_forecast’)
+	
+Date to predict
+	
+Target value which we need to predict.(example-> ‘temperature’,’wind speed’ etc.)
+	
+3.Importing Data from the Website using the API links:
+	
+response = requests.get(f"https://archive-api.open-meteo.com/v1/era5?latitude={latitude}&longitude={longitude}&start_date={start_date}&end_date={end_date}&hourly=temperature_2m,relativehumidity_2m,precipitation,windspeed_10m")
+response = json.loads(response.content)
 
-We then import data from [insert name of data source].  We print the data to allow us to verify what we've imported:
-```
-x = [1, 3, 4, 7]
-y = [2, 5, 1, 6]
+4.Adaptor code used to convert api response to dataframe used to train the model
+def fetch_data_from_api_response(response):
+   temp_col = response["hourly"]["temperature_2m"]
+   humidity_col= response["hourly"] ["relativehumidity_2m"]
+   ppt_col=response["hourly"] ["precipitation"]
+   wind_col= response["hourly"] ["windspeed_10m"]
+   data_dict = {
+       # "time":time_col,
+       "temperature":temp_col,
+       "humidity":humidity_col,
+       "precipitation":ppt_col,
+       "windspeed":wind_col
+   }
+   weather_data = pd.DataFrame(data_dict)
+   return weather_data
 
-for i in range(0,len(x)):
-	print "x[%d] = %f" % (i, x[i])		
-```
-- *NOTE 1:  This sample code doesn't actually import anything.  You'll need your code to grab live data from an online source.*  
-- *NOTE 2:  You will probably also need to clean/filter/re-structure the raw data.  Be sure to include that step.*
+5.Used the method mentioned above and stored the data in csv format
+	
+data = fetch_data_from_api_response(response)
+data.to_csv(filename,index=False)
 
-Finally, we visualize the data.  We save our plot as a `.png` image:
-```
-plt.plot(x, y)
-plt.savefig('samplefigure.png')	
-plt.show()
-```
 
-The output from this code is shown below:
+6.Function used to clean the None values from the dataframe and split the data in train test with 20% for test data and trained the model using LinearRegression() for the column specified in the parameter of the function. This function will return 4 values (trained model, target test values, target predicted values and columns used to train the model).
 
-![Image of Plot](samplefigure.png)
+def buildModel(df, y_column):
+   # dropping all the rows with None values
+   df = df.dropna(how='all')
+   # drop column with name temperature from X ( i.e seperating input data and target)
+   X = df.drop(y_column, axis=1)
+   X_values = X.values
+
+
+   # target in this case is temperature
+   y = df[y_column]
+
+
+   X_train, X_test, y_train, y_test = train_test_split(X_values, y, test_size=0.2, random_state=42)
+
+
+   model = LinearRegression()
+   model.fit(X_train, y_train)
+  
+   y_pred = model.predict(X_test)
+
+
+   return model,y_test,y_pred,X.columns.values
+
+7.Target label is taken as user input. Need to give a label as any one of the column names from the output of step 5.
+	
+y_label = input("target")
+model,y_test,y_pred, labels = buildModel(df,y_label)
+	
+8.Saved model in local to reuse again
+	
+pickle.dump(model, open('regression_model.pkl', 'wb'))
+	
+9.Code used to calculate the mean square error between predicted(generated from the model created above) and actual target values for test data.
+	
+mse = mean_squared_error(y_test, y_pred)
+print('Mean Squared Error:', mse)
+
+
+10.Load the model saved in pickle format in step 8.
+	
+regression_model = pickle.load(open('regression_model.pkl', 'rb'))
+	
+11.Part-II is to fetch forecast data from open-meteo api based on the same latitude and longitude used to fetch historical data to train the model.
+	
+# print(f'https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&hourly=temperature_2m,relativehumidity_2m,precipitation,windspeed_10m&start_date={date_to_predict}&end_date={date_to_predict}')
+response_forecast = requests.get(f'https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&hourly=temperature_2m,relativehumidity_2m,precipitation,windspeed_10m&start_date={date_to_predict}&end_date={date_to_predict}')
+response_forecast = json.loads(response_forecast.content)
+
+12.We reuse the same function used to build dataframe from the api response mentioned in step 4.
+	
+data_forecast = fetch_data_from_api_response(response_forecast)
+data_forecast
+
+13.Splitting the forecast data into input and target data
+	
+x_forecast = data_forecast.drop(y_label, axis=1)
+y_forecast = data_forecast[y_label]
+
+
+14.Predict forecast values of y_label ( taken as input from user ) based on the model loaded from local in step 8.
+	
+y_forecast_pred = regression_model.predict(x_forecast)
+
+15.Function used to plot comparison graph between predicted and actual target forecast values.
+
+
+def plot_predicted(y_forecast, y_predicted):
+   x = [i for i in range(1,25)]
+   plt.plot(x,y_forecast)
+   plt.plot(x,y_predicted)
+   plt.ylabel(y_label)
+   plt.xlabel("Hour in a day")
+   plt.title("Predicted " + y_label + " VS " + "Forecasted " + y_label)
+   plt.legend(['Forecast', 'Predicted'])
+   plt.show()
+   return y_forecast, y_predicted
+y_forecast, y_predicted  = plot_predicted(y_forecast, y_forecast_pred)
+	
+	
+
 
 ---
 
@@ -219,3 +329,29 @@ The current model of linear regression for forecasting climatic conditions showc
 7. **Optimization of computational efficiency** : With the escalation in data volume and model complexity, the aspect of computational efficiency gains significance. Future endeavors could concentrate on refining our coding practices and deploying more efficient algorithms to process large data sets.
 
 By exploring these approaches, we hope to continually refine and enhance our weather prediction model, driving the frontiers of accurate, reliable weather forecasting.
+	
+#Results
+	
+1.Temperature:
+
+We got the forecasted values of temperature from the API, and we got the predicted values of temperature for the given coordinates of latitude and longitude using our python model.After comparing them we plotted the comparison graph as follows:
+
+
+We also got the values of Temperature for the date/dates for which we predicted the Temperature using our model and after comparing them we find that the predicted values are close to the forecasted values which we obtained and we also found the mean squared error which is 26.481181490915063. To reduce the error even further we can train our model for a much longer period but as we know that weather prediction is not always accurate and even the forecasted values from the API can be wrong.
+
+2. Humidity:
+
+We got the forecasted values of Humidity from the API, and we got the predicted values of Humidity for the given coordinates of latitude and longitude using our python model.After comparing them we plotted the comparison graph as follows:
+
+
+We also got the values of Humidity for the date/dates for which we predicted the temperature using our model and after comparing them we find that the predicted values are getting closer to the forecasted values which we obtained and we also found the mean squared error which is 209.18585374612323. To reduce the error even further we can train our model for a much longer period but as we know that weather prediction is not always accurate and even the forecasted values from the API can be wrong.
+
+3. Precipitation
+
+
+We also got the values of Precipitation for the date/dates for which we predicted the Precipitation using our model and after comparing them we find that the predicted values are getting closer to the forecasted values which we obtained and we also found the mean squared error which is 1.2360902458370944.In this case we don’t have to do much as the error is very small. 
+	
+4. Windspeed
+
+
+We also got the values of Wind speed for the date/dates for which we predicted the Wind speed using our model and after comparing them we find that the predicted values are getting closer to the forecasted values which we obtained and we also found the mean squared error which is 17.8038854228414.We can reduce the model buy further training the model but there is no guarantee that the error will become 0 as weather prediction is a difficult task and the forecasted values can be wrong.	
