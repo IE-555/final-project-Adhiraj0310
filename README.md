@@ -325,7 +325,7 @@ We got the forecasted values of Windspeed from the API, and we got the predicted
 
 ![WindSpeed](image/Results/WindSpeed.png)
 
-We also got the values of Wind speed for the date/dates for which we predicted the Wind speed using our model and after comparing them we find that the predicted values are getting closer to the forecasted values which we obtained and we also found the mean squared error which is 17.8038854228414.We can reduce the model buy further training the model but there is no guarantee that the error will become 0 as weather prediction is a difficult task and the forecasted values can be wrong.
+We also got the values of Wind speed for the date/dates for which we predicted the Wind speed using our model and after comparing them we find that the predicted values are getting closer to the forecasted values which we obtained and we also found the mean squared error which is 17.8038854228414. We can reduce the model buy further training the model but there is no guarantee that the error will become 0 as weather prediction is a difficult task and the forecasted values can be wrong.
     
 ---
 
