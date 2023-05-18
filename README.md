@@ -1,20 +1,10 @@
-# Write a Brief Descriptive Title Here
+# Weather Forecasting Using Python
 
-Authors:  **Name 1**, **Name 2**, etc.
+Authors:  **Adhiraj Garg**, **Prashant Bhumireddy**,**Vivek Reddy Duvvuru**,**Prachi Kamble** 
 
 YouTube Video:  [Link](http://your_link_goes_here)
 
 ---
-
-**NOTE**:  The *italicized* content below is for your reference only.  Please remove these comments before submitting.
-
-
----
-
-
-
-
-
 ## Task List
 
 
@@ -35,29 +25,80 @@ YouTube Video:  [Link](http://your_link_goes_here)
 --- 
 
 ## Introduction
-*The purpose of this section is to provide some background about your project.  For example, your introduction should discuss*
-- *The purpose of your project;*
-- *The type of data you're using;*
-- *What you're doing with this data;*
-- *What types of analysis you're conducting;*
+Welcome to this project on weather forecasting using Python!
 
-*Your introduction should make the reader excited to read the rest of this document.*
+The purpose of this project is to demonstrate the use of historical weather data to create accurate predictions for future weather conditions.
+
+We will be using a dataset of historical weather data spanning several years, including information on temperature, precipitation, wind speed, and other relevant factors.
+
+Using this data, we will be conducting various types of analysis, such as data cleaning and preprocessing, exploratory data analysis, and building predictive models using machine learning algorithms.
+
+Our aim is to create a robust and accurate forecasting model that can be used to predict future weather conditions with a high degree of certainty.
+
+This project will showcase how Python can be used to handle and analyze large amounts of data, as well as how machine learning can be applied to solve real-world problems such as weather forecasting.
+
+We hope that this project will leave you excited to explore the fascinating world of data analysis and machine learning, and how they can be applied to solve important problems in our daily lives.
+
 
 ---
 
 ## References
-*In this section, provide links to your references and data sources.  For example:*
-- Source code was adapted from [the magic source code farm](http://www.amagicalnonexistentplace.com)
-- The code retrieves data from [the organization for hosting cool data](http://www.anothermagicalnonexistentplace.com)
-- The forecasting models were modified from [some academic research paper](http://www.linktotheacademicpaperyouused.com)
+-HISTORICAL WEATHER DATA was extracted using an API link which is taken from “https://open-meteo.com/en/docs/historical-weather-api#latitude=42.89&longitude=-78.88&start_date=2023-04-13&end_date=2023-04-27&hourly=temperature_2m,relativehumidity_2m,precipitation,windspeed_10m”
+
+-FORECASTED WEATHER DATA was extracted using an API link which is taken from “https://open-meteo.com/en/docs#latitude=42.89&longitude=-78.88&hourly=temperature_2m,relativehumidity_2m,precipitation,windspeed_10m&start_date=2023-05-01&end_date=2023-05-07”
+
+-The code for the regression model was taken from “OpenAI. (2021). ChatGPT [Computer software]. Retrieved Month Day, Year, from https://openai.com/blog/chatgpt/”
+
+-Code modifications were taken from “https://www.geeksforgeeks.org/”
 
 ---
 
 ## Requirements
-*In this section, provide detailed instructions for installing any necessary pre-requisites.  This could include:*
-- *Python packages/libraries;*
-- *API keys;*
-- *etc.*
+1.To build this model and extract the data from the API’s, we will need to use a few python libraries, some of which might already be pre installed and if they are not you will have to install them in your ipython notebook as follows:
+
+Enter the following commands in your notebook and they will install all the required libraries which we are using. 
+! pip install matplotlib
+
+! pip install request
+
+! pip install json
+
+! pip install pandas
+
+! pip install sklearn
+
+! pip install http
+
+! pip install pickle
+
+2. To use the API from the website for data extraction we will first need to check the website for its API link if one is given or sometimes some websites have their API keys and Host link which we can use in our code in the following ways:
+
+response = requests.get(f"https://archive-api.open-meteo.com/v1/era5?latitude={latitude}&longitude={longitude}&start_date={start_date}&end_date={end_date}&hourly=temperature_2m,relativehumidity_2m,precipitation,windspeed_10m")
+response = json.loads(response.content)
+  
+                                                                       OR
+import requests
+
+
+url = "https://weatherapi-com.p.rapidapi.com/forecast.json"
+
+
+querystring = {"q":"<REQUIRED>","days":"3","dt":"2023-05-05"}
+
+
+headers = {
+   "X-RapidAPI-Key": "2df736d9f2msh8a87273ab18ac1ap1d938djsn0a83e34b3d77",
+   "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
+}
+
+
+response = requests.get(url, headers=headers, params=querystring)
+
+
+print(response.json()
+	
+3. We should know the latitude and longitude of the place whose weather we are trying to predict and also the start and end dates for which we need to predict.
+
 
 ---
 
