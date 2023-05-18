@@ -245,6 +245,7 @@ def plot_predicted(y_forecast, y_predicted):
 y_forecast, y_predicted  = plot_predicted(y_forecast, y_forecast_pred)
 ```
 
+![Temperature](image/Results/Temperature.png)
     
 
 ---
@@ -294,28 +295,33 @@ In VSCode, you will find this Run All button to execute this code. Follow the to
 
 ![VSCodeRunAll](image/README/VSCodeRunAll.png)
 
-##Results
+## Results
     
-1.Temperature:
+**1.Temperature:**
 
 We got the forecasted values of temperature from the API, and we got the predicted values of temperature for the given coordinates of latitude and longitude using our python model.After comparing them we plotted the comparison graph as follows:
 
 We also got the values of Temperature for the date/dates for which we predicted the Temperature using our model and after comparing them we find that the predicted values are close to the forecasted values which we obtained and we also found the mean squared error which is 26.481181490915063. To reduce the error even further we can train our model for a much longer period but as we know that weather prediction is not always accurate and even the forecasted values from the API can be wrong.
+![Temperature](image/Results/Temperature.png)
 
-2. Humidity:
+**2. Humidity:**
 
 We got the forecasted values of Humidity from the API, and we got the predicted values of Humidity for the given coordinates of latitude and longitude using our python model.After comparing them we plotted the comparison graph as follows:
 
 We also got the values of Humidity for the date/dates for which we predicted the temperature using our model and after comparing them we find that the predicted values are getting closer to the forecasted values which we obtained and we also found the mean squared error which is 209.18585374612323. To reduce the error even further we can train our model for a much longer period but as we know that weather prediction is not always accurate and even the forecasted values from the API can be wrong.
+![Humidity](image/Results/Humidity.png)
 
-3. Precipitation
+**3. Precipitation**
 
 We also got the values of Precipitation for the date/dates for which we predicted the Precipitation using our model and after comparing them we find that the predicted values are getting closer to the forecasted values which we obtained and we also found the mean squared error which is 1.2360902458370944.In this case we don’t have to do much as the error is very small.
+![Precipitation](image/Results/Precipitation.png)
     
-4. Windspeed
+**4. Windspeed**
 
 We also got the values of Wind speed for the date/dates for which we predicted the Wind speed using our model and after comparing them we find that the predicted values are getting closer to the forecasted values which we obtained and we also found the mean squared error which is 17.8038854228414.We can reduce the model buy further training the model but there is no guarantee that the error will become 0 as weather prediction is a difficult task and the forecasted values can be wrong.
+![WindSpeed](image/Results/WindSpeed.png)
     
+---
 
 # **Prospective Development Directions**
 
