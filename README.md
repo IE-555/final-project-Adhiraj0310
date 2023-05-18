@@ -320,7 +320,9 @@ We got the forecasted values of Precipitation from the API, and we got the predi
 ![Precipitation](image/Results/Precipitation.png)
 
 We also got the values of Precipitation for the date/dates for which we predicted the Precipitation using our model and after comparing them we find that the predicted values are getting closer to the forecasted values which we obtained and we also found the mean squared error which is 1.2360902458370944.In this case we don’t have to do much as the error is very small. 
-    
+
+---    
+
 **4. Windspeed:**
 
 We got the forecasted values of Windspeed from the API, and we got the predicted values of Windspeed for the given coordinates of latitude and longitude using our python model. After comparing them we plotted the comparison graph as follows:
