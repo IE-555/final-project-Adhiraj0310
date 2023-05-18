@@ -204,7 +204,7 @@ If you are using Anaconda or Jupyter setup or VS Code python notebook setup, the
 
 In VSCode, you will find this Run All button to execute this code. Follow the top floating prompt to input the target when asked in the code(from 10th cell) and hit 'Enter' to pass the input enumeration string. 
 
-![1684375561781](image/Code/1684375561781.png)
+![VSCodeRunAll](image/README/VSCodeRunAll.png)
 
 # **Prospective Development Directions**
 
